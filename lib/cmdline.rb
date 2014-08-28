@@ -30,6 +30,11 @@ class CmdLine
         @config[:refresh_rate] = refresh_rate
       end
 
+      @config[:grep] = /.*/
+      opt.on '-g', '--grep=REGEXP', String, 'Show only the keys matching the regular expression' do |regex_string|
+        @config[:grep] = Regexp.new regex_string
+      end
+
       opt.on_tail '-h', '--help', 'Show usage info' do
         puts opts
         exit
