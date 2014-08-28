@@ -89,8 +89,6 @@ class UI
 
       # iterate over all the keys in the metrics hash and calculate some values
       sniffer.metrics[:calls].each do |k,v|
-          next unless @config[:grep].match(k)
-          
           reqsec = v / elapsed
 
           # if req/sec is <= the discard threshold delete those keys from

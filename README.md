@@ -43,6 +43,7 @@ the quickest way to get it running is to:
             --host=HOST                  Network host to sniff on (default all)
         -d, --discard=THRESH             Discard keys with request/sec rate below THRESH
         -r, --refresh=MS                 Refresh the stats display every MS milliseconds
+        -g, --grep=REGEX                 Print out only the keys that match the regex provided
         -h, --help                       Show usage info
 
 ## User interface commands

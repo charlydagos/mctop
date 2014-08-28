@@ -8,6 +8,7 @@ class MemcacheSniffer
     @source  = config[:nic]
     @port    = config[:port]
     @host    = config[:host]
+    @regex   = config[:grep]
 
     @metrics = {}
     @metrics[:calls]   = {}
@@ -40,14 +41,16 @@ class MemcacheSniffer
         key   = $1
         bytes = $2
 
-        @semaphore.synchronize do
-          if @metrics[:calls].has_key?(key)
-            @metrics[:calls][key] += 1
-          else
-            @metrics[:calls][key] = 1
-          end
+        if @regex.matches(key)
+          @semaphore.synchronize do
+            if @metrics[:calls].has_key?(key)
+              @metrics[:calls][key] += 1
+            else
+              @metrics[:calls][key] = 1
+            end
 
-          @metrics[:objsize][key] = bytes.to_i
+            @metrics[:objsize][key] = bytes.to_i
+          end
         end
       end
 
