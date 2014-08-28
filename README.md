@@ -69,6 +69,7 @@ The following details are displayed in the status bar
 ## Changelog
 
 * 2012-12-14 - Now compatible with Ruby 1.8.x (tested on 1.8.7-p371)
+* 2014-08-28 - Added new option to sniff out keys by matching to regex
 
 ## Known issues / Gotchas
 
