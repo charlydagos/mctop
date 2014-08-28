@@ -117,7 +117,7 @@ class UI
         k = top[i][0]
         v = top[i][1]
 
-        unless @config[:grep].match(k) next
+        next unless @config[:grep].match(k)
 
         # if the key is too wide for the column truncate it and add an ellipsis
         if k.length > @key_col_width
