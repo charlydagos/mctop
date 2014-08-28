@@ -41,7 +41,7 @@ class MemcacheSniffer
         key   = $1
         bytes = $2
 
-        if @regex.matches(key)
+        if @regex.match(key)
           @semaphore.synchronize do
             if @metrics[:calls].has_key?(key)
               @metrics[:calls][key] += 1
