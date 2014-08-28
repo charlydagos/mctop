@@ -89,6 +89,8 @@ class UI
 
       # iterate over all the keys in the metrics hash and calculate some values
       sniffer.metrics[:calls].each do |k,v|
+          next unless @config[:grep].match(k)
+          
           reqsec = v / elapsed
 
           # if req/sec is <= the discard threshold delete those keys from
@@ -116,8 +118,6 @@ class UI
       if i < top.length
         k = top[i][0]
         v = top[i][1]
-
-        next unless @config[:grep].match(k)
 
         # if the key is too wide for the column truncate it and add an ellipsis
         if k.length > @key_col_width
